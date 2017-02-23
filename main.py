@@ -17,7 +17,15 @@ detector = LaneDetector()
 
 
 def process_frame(frame):
-    ''' Main function that processes each frame of the video
+    ''' Main pipeline function that processes each frame of the video
+        - Undistort image using camera calibration
+        - Apply thresholds to detect lane edges
+        - Transform image to bird's eye view
+        - Detect left/right lane edges
+        - Draw lane overlay using detected lane edges
+        - Find lane curvature
+        - Draw dashboard with lane info
+        :return processed frame with lane lines drawn
     ''' 
     
     fig = plt.figure(figsize=(10,8))
@@ -55,11 +63,11 @@ def process_frame(frame):
 
 
 def main():
-    # video = 'project_video'
+    video = 'project_video'
     # video = 'challenge_video'
-    video = 'harder_challenge_video'
-    output = '{}_out-full.mp4'.format(video)
-    clip   = VideoFileClip('{}.mp4'.format(video)).subclip(0, 15)
+    # video = 'harder_challenge_video'
+    output = 'output_images/{}_out-full.mp4'.format(video)
+    clip   = VideoFileClip('{}.mp4'.format(video)).subclip(0, 50)
     print('Processing video..')
     w_clip = clip.fl_image(process_frame)  # expects color images
     w_clip.write_videofile(output, audio=False)

@@ -5,9 +5,9 @@ OFFSET = 250
 
 SRC_POINTS = np.float32([
     (130, 700),   # Bottom left
-    (540, 465),   # Top L  
-    (740, 465),   # Top R 
-    (1200, 700)   # Bottom R
+    (540, 465),   # Top Left  
+    (740, 465),   # Top Right 
+    (1200, 700)   # Bottom Right
 ])
 
 DEST_POINTS = np.float32([

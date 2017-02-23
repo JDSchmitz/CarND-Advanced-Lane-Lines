@@ -125,8 +125,9 @@ if __name__ == '__main__':
     DIR_TEST = 'test_images/'
 
     test_images = [
-        DIR_CHESSBOARD + 'calibration2.jpg',
+        # DIR_CHESSBOARD + 'calibration2.jpg',
         DIR_TEST + 'test4.jpg',
+        DIR_TEST + 'test5.jpg'
     ]
 
     for imgfile in test_images:
@@ -137,6 +138,6 @@ if __name__ == '__main__':
         undistorted_images.append(undistorted)
 
     plot_images(original_images, undistorted_images, 
-                        save_filename='output_images/camtest4.png', 
+                        save_filename='output_images/cam-road-calib1.png', 
                         left_title='Original', 
                         right_title='Undistorted')

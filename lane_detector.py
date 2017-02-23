@@ -180,8 +180,6 @@ class LaneDetector():
         # print(left_curverad, 'm', right_curverad, 'm')
         # Example values: 632.1 m    626.2 m
 
-        lean_ratio = left_curverad / right_curverad
-
         lx = self.left_fit[0] * (img.shape[0] - 1)**2 + \
             self.left_fit[1] * (img.shape[0] - 1) + \
             self.left_fit[2]

@@ -56,7 +56,7 @@ def gradient_magnitude(sobel_x, sobel_y):
     scalefact = np.max(magnitude)/255
     magnitude = (magnitude/scalefact).astype(np.uint8)
 
-    # TODO: rescale???
+    # : rescale???
     return magnitude # .astype(np.uint16)   # magnitude.astype(np.uint16) ??
 
 def gradient_direction(sobel_x, sobel_y):
@@ -96,7 +96,7 @@ def process_image(image, y_cutoff=0):
     grad_magnitude = gradient_magnitude(sob_x, sob_y)  # (0, 255)
     grad_direction = gradient_direction(sob_x, sob_y)  # float
     
-    # TODO: scale factors??
+    # : scale factors
     sob_x = np.uint8(255 * sob_x / np.max(sob_x))  # (0, 255)
     sob_y = np.uint8(255 * sob_y / np.max(sob_y))  # (0, 255)
 
@@ -107,7 +107,7 @@ def process_image(image, y_cutoff=0):
     combined_mask = np.zeros(image.shape[:-1], dtype=np.uint8)
     
     # 8 - apply thresholds 
-    # TODO: define thresholds for Magnitude, X, Y, Direction
+    # : define thresholds for Magnitude, X, Y, Direction
     combined_mask[y_cutoff:, :][((sob_x >= THRESH_SOB_X[0]) & (sob_x <= THRESH_SOB_X[1]) & 
                                 (sob_y >= THRESH_SOB_Y[0])  & (sob_y <= THRESH_SOB_Y[1])) |
                                 ((grad_magnitude >= THRESH_GRAD[0]) & (grad_magnitude <= THRESH_GRAD[1]) & 
@@ -176,9 +176,6 @@ def apply_thresholds(img):
     # 1 - convert to gray
     gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
     # 2 - get sobel X and y 
-    #sob_x = absolute_sobel(gray, orient='x', sobel_kernel=15)
-    #sob_y = absolute_sobel(gray, orient='y', sobel_kernel=15)
-
     sob_x = cv2.Sobel(img[:, :, 2], cv2.CV_64F, 1, 0, ksize=9)
     sob_y = cv2.Sobel(img[:, :, 2], cv2.CV_64F, 0, 1, ksize=9)
 
@@ -223,7 +220,7 @@ if __name__ == '__main__':
         right_images.append(img_threshold)
 
     plot_images(original_images, right_images, 
-                        save_filename='output_images/thresh6b_k7.png', 
+                        save_filename='output_images/masked1.png', 
                         left_title='Original', 
-                        right_title='Thresholded')
+                        right_title='Masked')
 
