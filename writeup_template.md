@@ -120,7 +120,7 @@ Additionally, we display a short dashboard with lane information, using function
 
 Here is an example of my result on a test image:
 
-![alt text][image6]
+![alt text][image5]
 
 ---
 
