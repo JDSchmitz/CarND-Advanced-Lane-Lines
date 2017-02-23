@@ -37,7 +37,7 @@ You're reading it!
 
 ####1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
 
-The code for this step is contained in the file in "./camera_calibrator.pyb".  
+The code for this step is contained in the file in "./camera_calibrator.py"(./camera_calibrator.py)  
 
 I start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here I am assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image.  Thus, `objp` is just a replicated array of coordinates, and `objpoints` will be appended with a copy of it every time I successfully detect all chessboard corners in a test image.  `imgpoints` will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.  
 
@@ -54,13 +54,13 @@ Using the camera calibration parameters from above, the image of a road is undis
 
 ####2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines 171 through 194 in `threshold_detector.py`).  
-I used Sobel edge detection (kernel size 7), to get the _direction_ and _magnitude_ of gradients, and extracted White and Yellow colors via masking using `cv2.inRange()`
+I used Sobel edge detection (kernel size 7), to get the _direction_ and _magnitude_ of gradients, and extracted White and Yellow colors via masking using `cv2.inRange()`. The values for thresholds were determined by trial and error. 
 
 Here's an example of my output for this step.  
 
 ![alt text][image3]
 
-As it shows, the lane edges are prominent, but there's some noise from other artefacts.
+As it shows, the lane edges are prominent in some cases, and there's some noise from other artefacts (e.g. shaded trees, etc.)
 
 ####3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
@@ -100,7 +100,7 @@ I verified that my perspective transform was working as expected by drawing the 
 
 ####4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-In the file `lane_detector.py` is the `class LaneDetector` which has functions `window_fit()` and `sliding_window_fit()`. 
+In the file `lane_detector.py`(./lane_detector.py) is the `class LaneDetector` which has functions `window_fit()` and `sliding_window_fit()`. 
 These functions take an image and attempt to find lane lines using polynomial fit.
 
 The function `sliding_window_fit` uses the sliding window algorithm to divide an image in 9 sliding windows and finds peaks using histogram technique.
