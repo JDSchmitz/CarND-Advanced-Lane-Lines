@@ -53,7 +53,7 @@ Using the camera calibration parameters from above, the image of a road is undis
 ![alt text][image2]
 
 ####2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines 171 through 194 in `threshold_detector.py`).  
+I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines 171 through 194 in [file](threshold_detector.py) `threshold_detector.py`).  
 I used Sobel edge detection (kernel size 7), to get the _direction_ and _magnitude_ of gradients, and extracted White and Yellow colors via masking using `cv2.inRange()`. The values for thresholds were determined by trial and error. 
 
 Here's an example of my output for this step.  
@@ -65,10 +65,10 @@ As it shows, the lane edges are prominent in some cases, and there's some noise 
 ####3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
 The code for my perspective transform is in the [file](./perspective.py) `perspective.py`, which includes a class `PerspectiveTransformer`
-The `forward_transform()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points, and produces a bird's eye view of the image.
-The `inverse_transform()` performs the inverse transformation, i.e. from a bird's eye view back to the camera-front view.
+The `forward_transform()` function takes as inputs an image (`img`), and produces a bird's eye view of the image.
+The `inverse_transform()` function performs the inverse transformation, i.e. from a bird's eye view back to the camera-front view.
 
-Through trial and erorr, I chose the hardcode the source and destination points in the following manner:
+Through trial and error, I found and hardcoded the source and destination points in the following manner:
 
 ```
 SRC_POINTS = np.float32([
