@@ -18,6 +18,12 @@ The goals / steps of this project are the following:
 * Warp the detected lane boundaries back onto the original image.
 * Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
 
+TL-DR:
+
+Here's the video of the car.
+[![Advanced Lane Detection](./output_images/yt_adv_lane_detect.png)](https://www.youtube.com/watch?v=4b5anD2aDD0&feature=youtu.be)
+
+
 [//]: # (Image References)
 
 [image1]: ./output_images/cam-calib1.png "Undistorted"
